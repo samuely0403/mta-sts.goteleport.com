@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+    <html lang="en">
+        
+        <head>
+            <meta charset="utf-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viwe port" content="with-device, initial-scale=1.0">
+            <title>EXCEL AUTONOMOUS Q & A</title>
+            <link rel="icon" type="image/x-icon" href="img/ea.ico">
+            <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css'>
+            <style>
+                :root{
+                    --orange:#ff7800;
+                    --black:#130f40;
+                    --blue:#039dfc;
+                    --light-color:#666;
+                    --box-shadow:0 .5rem 1rem rgba(0,0,0,.1);
+                    --border:2rem solid rgba(0,0,0,.1);
+                    --outline:1rem solid rgba(0,0,0,.1);
+                    --outline-hover:2rem solid var(--black);
+                }
+                *{
+                    font-family: 'Poppins',sans-serif;
+                    margin: 0; padding: 0;
+                    box-sizing: border-box;
+                    outline: none; border: none;
+                    text-decoration: none;
+                    text-transform: capitalize;
+                    transition: all .2s linear;                
+                }
+                html{
+                    font-size: 62.5%;
+                    overflow-x: hidden;
+                    scroll-behavior: smooth;
+                    scroll-padding-top: 7rem;
+                }
+                .header{
+                    position: fixed;
+                    top: 0; left: 0; right: 0;
+                    z-index: 1000;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    padding: 1rem 4%;
+                    background: #fff;
+                    box-shadow: var(--box-shadow);
+                }
+                .header .logo{
+                    font-size: 1.5rem;
+                    font-weight: bolder;
+                    color: var(--black);
+                }
+                .header .logo img{
+                    width: 50px;
+                }
+                .header .navbar a{
+                    font-size: 1.7rem;
+                    margin: 0 1rem;
+                    color:var(--black);
+                }
+                .header .navbar a:hover{
+                    color:var(--blue);
+                }
+                .header .icons div{
+                    height: 4.5rem;
+                    width: 4.5rem;
+                    line-height: 4.5rem;
+                    border-radius: .5rem;
+                    background: #eee;
+                    color: var(--black);
+                    font-size: 2rem;
+                    margin-left: .3rem;
+                    cursor: pointer;
+                    text-align: center;
+                }
+                .header .icons div:hover{
+                    background: var(--blue);
+                    color: #eee;
+                }
+                #menu-btn{
+                    display: none;
+                }
+                .header .search-form{
+                    position: absolute;
+                    top: 110%; right:-110%;
+                    width: 50rem;
+                    height:5rem;
+                    background: #fff;
+                    border-radius: .5rem;
+                    overflow: hidden;
+                    display: flex;
+                    align-items: center;
+                    box-shadow: var(--box-shadow);
+                }
+                .header .search-form.active{
+                    right: 2rem;
+                    transition: .4s linear;
+                }
+                .header .search-form input{
+                    height: 100%;
+                    width: 100%;
+                    background: none;
+                    text-transform: none;
+                    font-size: 1.6rem;
+                    color: var(--black);
+                    padding:0 1.5rem;
+                }
+                .header .search-form label{
+                    font-size: 2.2rem;
+                    padding-right: 1.5rem;
+                    color: var(--black);
+                    cursor: pointer;
+                }
+                .header .search-form label:hover{
+                    color: var(--blue);
+                }
+                .btn{
+                    margin-top: 1rem;
+                    display: inline-block;
+                    padding: 0.8rem 3rem;
+                    font-size: 1.7rem;
+                    border-radius: 0.5rem;
+                    border: 0.2rem solid var(--black);
+                    color: var(--black);
+                    cursor: pointer;
+                    background: none;    
+                }
+                .btn:hover{
+                    background: var(--blue);
+                    color: #fff;
+                }
+                .header .login-form{
+                    position: absolute;
+                    top: 110%; right: -110%;
+                    width: 30rem;
+                    box-shadow: var(--box-shadow);
+                    padding: 3rem;
+                    border-radius: 0.5rem;
+                    background: #fff;
+                    text-align: center;
+                }
+                .header .login-form.active{
+                    right: 2rem;
+                    transition: 0.4s initial;
+                }
+                .header .login-form h3{
+                    font-size: 2.5rem;
+                    text-transform: uppercase;
+                    color: var(--black);
+                }
+                .header .login-form .box{
+                    width: 100%;
+                    margin: 0.7rem 0;
+                    background: #eee;
+                    border-radius: 0.5rem;
+                    padding: 1rem;
+                    font-size: 1.6rem;
+                    color: var(--black);
+                    text-transform: none;
+                }
+                .header .login-form p{
+                    font-size: 1.4rem;
+                    padding: 0.5rem 0;
+                    color: var(--light-color);
+                }
+                .header .login-form p a{
+                    color: var(--blue);
+                    text-decoration: underline;
+                }
+
+                body{
+                    background-image: url('img/book-library.png');
+                }
+
+
+
+
+
+
+
+
+
+
+
+
+                @media (max-width:991px){
+                    html{
+                    font-size: 55%;
+                    }
+                    .header{
+                        padding: 2rem;
+                    }
+                }
+                @media (max-width:576px){
+                    #menu-btn{
+                    display: inline-block;
+                    }
+                    .header .search-form{
+                        width: 90%;
+                    }
+                    .header .navbar{
+                        position: absolute;
+                        top: 110%; right: -110%;
+                        width: 30rem;
+                        box-shadow: var(--box-shadow);
+                        border-radius: 0.5rem;
+                        background: #fff;
+                    }
+                    .header .navbar.active{
+                        right: 2rem;
+                        transition: 0.4s linear;
+                    }
+                    .header .navbar a{
+                        font-size: 2rem;
+                        margin: 2rem 2.5rem;
+                        display: block;
+                    }
+                    
+                }
+                @media (max-width:450px){
+                    html{
+                    font-size: 50%;
+                    }
+                }
+            </style>
+            
+        </head>
+            <body>
+
+                <header class="header">
+                    <a href="#" class="logo"><img src="img/ea.ico"> EXCEL CSE QUESTINES & ANSWERS</a>
+                    <nav class="navbar">
+                        <a href="#Home">Home</a>
+                        <a href="#Deportmnt">Deportmnt</a>
+                        <a href="#Books">Books</a>
+                        <a href="#Time-table">Time-table</a>
+                        <a href="#Review">Review</a>
+                        <a href="#Blogs">Blogs</a>
+                    </nav>
+                    <div class="icons">
+                        <div class="fas fa-bars" id="menu-btn"></div>
+                        <div class="fas fa-search" id="search-btn"></div>
+                        <div class="fas fa-user" id="login-btn"></div>
+                    </div>
+                    <form action="" class="search-form">
+                        <input type="search" id="search-box" placeholder="search here....">
+                        <label for="search-box" class="fas fa-search"></label>
+
+                    </form>
+                    <form action="" class="login-form">
+                        <h3>Login Now</h3>
+                        <input type="email" placeholder="enter email" class="box">
+                        <input type="password" placeholder="enter password" class="box">
+                        <p>forget your password <a href="#">click here</a></p>
+                        <p>don't have an account <a href="#">create now</a></p>
+                        <input type="submit" value="Login" class="btn">
+                    </form>
+                </header>
+                
+                
+                
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <script src="scripts.js"></script>
+            </body>
+    </html>
